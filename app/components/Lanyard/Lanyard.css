@@ -1,0 +1,53 @@
+.lanyard-wrapper {
+  position: fixed; /* Fixed di semua device */
+  right: -20%; /* Posisi dari kanan viewport */
+  top: 0; /* Mulai dari paling atas viewport */
+  z-index: 999; /* Di bawah navbar (1000) tapi di atas konten */
+  width: 700px;
+  height: 100vh;
+  pointer-events: auto;
+  overflow: visible;
+}
+
+/* Responsive untuk Tablet Landscape (1024px - 1200px) */
+@media (max-width: 1200px) {
+  .lanyard-wrapper {
+    width: 550px;
+    right: 3%;
+  }
+}
+
+/* Responsive untuk Tablet Portrait (768px - 1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .lanyard-wrapper {
+    width: 450px;
+    right: 2%;
+  }
+}
+
+/* Responsive untuk Mobile & Small Tablet (max-width: 768px) */
+@media (max-width: 768px) {
+  .lanyard-wrapper {
+    position: fixed; /* TETAP FIXED di mobile */
+    right: 50%; /* Center horizontally */
+    transform: translateX(50%); /* Center horizontally */
+    width: 350px;
+    height: 100vh;
+    top: 0; /* Tetap dari atas */
+    z-index: 999;
+  }
+}
+
+/* Small Mobile (max-width: 480px) */
+@media (max-width: 480px) {
+  .lanyard-wrapper {
+    width: 300px;
+  }
+}
+
+/* Extra Small Mobile (max-width: 375px) */
+@media (max-width: 375px) {
+  .lanyard-wrapper {
+    width: 260px;
+  }
+}
