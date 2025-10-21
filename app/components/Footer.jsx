@@ -20,7 +20,7 @@ export default function Footer() {
         if (section) {
           section.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
-      }, 100);
+      }, 300);
     } else {
       // Already on home, just scroll
       const section = document.getElementById(sectionId);
@@ -45,29 +45,29 @@ export default function Footer() {
             <h3>Quick Links</h3>
             <ul>
               <li>
-                <a href="/#home" onClick={(e) => handleSectionClick(e, 'home')}>
+                <Link href="/#home" onClick={(e) => handleSectionClick(e, 'home')}>
                   Home
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#about" onClick={(e) => handleSectionClick(e, 'about')}>
+                <Link href="/#about" onClick={(e) => handleSectionClick(e, 'about')}>
                   About Me
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#portfolio" onClick={(e) => handleSectionClick(e, 'portfolio')}>
+                <Link href="/#portfolio" onClick={(e) => handleSectionClick(e, 'portfolio')}>
                   Portfolio
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#skills" onClick={(e) => handleSectionClick(e, 'skills')}>
+                <Link href="/#skills" onClick={(e) => handleSectionClick(e, 'skills')}>
                   Skills
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="/#certificates" onClick={(e) => handleSectionClick(e, 'certificates')}>
+                <Link href="/#certificates" onClick={(e) => handleSectionClick(e, 'certificates')}>
                   Certificates
-                </a>
+                </Link>
               </li>
               <li>
                 <Link href="/contact">Contact</Link>

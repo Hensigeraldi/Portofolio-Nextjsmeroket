@@ -150,7 +150,6 @@ body {
 
 /* ========================================
    TABLET & MOBILE NAVBAR (max-width: 1024px)
-   iPad, Tablet, dan Mobile semua pakai hamburger
    ======================================== */
 
 @media (max-width: 1024px) {
@@ -162,7 +161,6 @@ body {
     border-radius: 15px;
   }
   
-  /* Logo Tablet/Mobile */
   .logo-img {
     width: 32px;
     height: 32px;
@@ -172,12 +170,10 @@ body {
     font-size: 16px;
   }
   
-  /* Hamburger Menu untuk Tablet & Mobile */
   .menu-toggle {
     display: flex;
   }
   
-  /* Hamburger Animation */
   .menu-toggle.active .hamburger-line:nth-child(1) {
     transform: rotate(45deg) translate(6px, 6px);
     background: #ce441a;
@@ -197,7 +193,6 @@ body {
     background: #ce441a;
   }
   
-  /* Mobile Menu Design */
   .nav-links {
     position: fixed;
     top: 0;
@@ -219,7 +214,6 @@ body {
     right: 0;
   }
   
-  /* Menu Items dengan Icon */
   .nav-links a {
     width: 100%;
     padding: 16px 20px;
@@ -234,7 +228,6 @@ body {
     gap: 12px;
   }
   
-  /* Tampilkan icon di tablet & mobile */
   .mobile-icon {
     display: inline-block;
     font-size: 16px;
@@ -253,7 +246,6 @@ body {
     border-bottom: none;
   }
   
-  /* Hover Effects */
   .nav-links a:hover {
     color: #ce441a;
     background: rgba(255, 255, 255, 0.05);
@@ -261,7 +253,6 @@ body {
     transform: translateX(5px);
   }
   
-  /* Active State */
   .nav-links a.active {
     color: #ce441a;
     background: rgba(206, 68, 26, 0.15);
@@ -273,7 +264,6 @@ body {
     color: #ff6b6b;
   }
   
-  /* Backdrop Blur Effect */
   .nav-links.active::before {
     content: '';
     position: fixed;
@@ -287,7 +277,6 @@ body {
     animation: fadeIn 0.3s ease;
   }
   
-  /* Staggered Animation untuk Menu Items */
   .nav-links.active a {
     animation: slideInRight 0.5s ease forwards;
     opacity: 0;
@@ -301,10 +290,6 @@ body {
   .nav-links.active a:nth-child(5) { animation-delay: 0.3s; }
   .nav-links.active a:nth-child(6) { animation-delay: 0.35s; }
 }
-
-/* ========================================
-   ANIMATIONS
-   ======================================== */
 
 @keyframes slideInRight {
   from {
@@ -326,11 +311,6 @@ body {
   }
 }
 
-/* ========================================
-   FINE-TUNING UNTUK UKURAN SPESIFIK
-   ======================================== */
-
-/* Small Mobile (max-width: 480px) */
 @media (max-width: 480px) {
   .nav-links {
     width: 260px;
@@ -353,7 +333,6 @@ body {
   }
 }
 
-/* Extra Small Mobile (max-width: 375px) */
 @media (max-width: 375px) {
   .nav-links {
     width: 240px;
@@ -376,7 +355,6 @@ body {
   }
 }
 
-/* Landscape Mode untuk Mobile/Tablet */
 @media (max-height: 500px) and (orientation: landscape) {
   .nav-links {
     padding-top: 70px;
@@ -388,11 +366,6 @@ body {
     font-size: 14px;
   }
 }
-
-/* ========================================
-   DESKTOP ONLY (min-width: 1025px)
-   Hanya layar besar yang pakai layout horizontal
-   ======================================== */
 
 @media (min-width: 1025px) {
   .menu-toggle {
@@ -475,7 +448,6 @@ body {
   line-height: 1.6;
 }
 
-/* Typing Animation */
 .typing-container {
   position: relative;
   min-height: 60px;
@@ -521,7 +493,6 @@ body {
   font-size: 1.2em;
 }
 
-/* Border Button */
 .border-button {
   display: inline-flex;
   align-items: center;
@@ -570,7 +541,6 @@ body {
   transform: translateX(5px) scale(1.1);
 }
 
-/* Social Icons */
 .social-icons {
   margin-top: 30px;
   display: flex;
@@ -697,7 +667,6 @@ body {
   margin-bottom: 10px;
 }
 
-/* Image Morph Animation */
 @keyframes morph {
   0% {
     border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
@@ -877,7 +846,6 @@ body {
   width: 100%;
 }
 
-/* Image Modal */
 .image-modal {
   display: block;
   position: fixed;
@@ -1274,7 +1242,6 @@ body {
   color: #ce441a;
 }
 
-/* Footer Social Icons - Updated */
 .footer-social .social-icons {
   display: flex;
   gap: 12px;
@@ -1715,7 +1682,7 @@ body {
    RESPONSIVE DESIGN - MOBILE & TABLET
    ======================================== */
 
-/* Tablet Landscape - Large (1024px - 1200px) */
+/* Tablet Landscape (1024px - 1200px) */
 @media (max-width: 1200px) {
   .navbar {
     left: 5%;
@@ -1733,22 +1700,56 @@ body {
   .home-content h2 {
     font-size: 2.8em;
   }
+}
+
+/* iPad & Tablet Portrait (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .home {
+    flex-direction: column;
+    justify-content: center;
+    padding: 100px 5% 40px;
+    gap: 20px;
+  }
+  
+  .home-content {
+    max-width: 100%;
+    text-align: center;
+    order: 2;
+  }
+  
+  .home-content h1 {
+    font-size: 3.5em;
+  }
+  
+  .home-content h2 {
+    font-size: 2.2em;
+  }
+  
+  .home-content p {
+    font-size: 1.1em;
+  }
   
   .lanyard-container {
-    width: 550px;
-    height: 450px;
+    order: 1;
+    width: 450px;
+    height: 50vh;
+    margin: 0 auto;
+  }
+  
+  .social-icons {
+    justify-content: center;
   }
 }
 
-/* Mobile & Small Tablet (max-width: 768px) */
-@media (max-width: 768px) {
-  /* Home Section Mobile */
+/* Mobile (max-width: 767px) */
+@media (max-width: 767px) {
   .home {
     flex-direction: column;
     text-align: center;
-    padding: 120px 20px 40px;
-    justify-content: flex-end;
+    padding: 100px 20px 40px;
+    justify-content: center;
     min-height: 100vh;
+    gap: 20px;
   }
   
   .home-content {
@@ -1772,9 +1773,10 @@ body {
   }
   
   .lanyard-container {
+    order: 1;
     width: 350px;
-    height: 100vh;
-    max-width: 100%;
+    height: 45vh;
+    max-width: 90%;
     margin: 0 auto;
   }
   
@@ -1800,7 +1802,6 @@ body {
     font-size: 1.5rem;
   }
   
-  /* About Section Mobile */
   .about {
     padding: 80px 20px;
     min-height: auto;
@@ -1844,7 +1845,6 @@ body {
     font-size: 1.8em;
   }
   
-  /* Portfolio Section Mobile */
   .portfolio {
     padding: 80px 20px;
   }
@@ -1873,7 +1873,6 @@ body {
     height: 180px;
   }
   
-  /* Skills Section Mobile */
   .skills {
     padding: 80px 20px;
   }
@@ -1959,7 +1958,6 @@ body {
     padding: 6px 15px;
   }
   
-  /* Footer Mobile */
   .footer {
     padding: 40px 0 0;
   }
@@ -2005,7 +2003,6 @@ body {
     padding: 15px 0;
   }
   
-  /* Modal Mobile */
   .modal-content {
     width: 95%;
     max-width: 95%;
@@ -2048,9 +2045,8 @@ body {
   }
   
   .lanyard-container {
-    max-width: 300px;
-    height: 380px;
     width: 300px;
+    height: 40vh;
   }
   
   .border-button {
@@ -2113,7 +2109,7 @@ body {
   }
 }
 
-/* Extra Small Mobile - iPhone SE/5 (max-width: 375px) */
+/* Extra Small Mobile (max-width: 375px) */
 @media (max-width: 375px) {
   .home-content h1 {
     font-size: 2.2em;
@@ -2125,7 +2121,7 @@ body {
   
   .lanyard-container {
     width: 260px;
-    height: 220px;
+    height: 35vh;
   }
   
   .about-img img {
@@ -2158,8 +2154,8 @@ body {
   }
   
   .lanyard-container {
-    width: 200px;
-    height: 200px;
+    width: 250px;
+    height: 50vh;
   }
 }
 
@@ -2167,7 +2163,6 @@ body {
 /* CONTACT PAGE STYLES */
 /* ============================================ */
 
-/* Parallax Hero Section */
 .container {
   max-width: 100%;
   margin: 0;
@@ -2200,7 +2195,6 @@ body {
   border-radius: 0 0 15px 15px;
 }
 
-/* Contact Section */
 .contact {
   padding: 80px 5%;
   background: linear-gradient(135deg, #1a1a1a, #2c3e50);
@@ -2431,17 +2425,3 @@ body {
     font-size: 0.95em;
   }
 }
-
-/* Chatbot Greeting Animation */
-@keyframes slideInRight {
-  from {
-    opacity: 0;
-    transform: translateX(100px);
-  }
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-
-

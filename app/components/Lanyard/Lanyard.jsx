@@ -6,7 +6,6 @@ import { useGLTF, useTexture, Environment, Lightformer } from '@react-three/drei
 import { BallCollider, CuboidCollider, Physics, RigidBody, useRopeJoint, useSphericalJoint } from '@react-three/rapier';
 import { MeshLineGeometry, MeshLineMaterial } from 'meshline';
 
-// replace with your own imports, see the usage snippet for details
 const cardGLB  = './assets/lanyard/card.glb';
 const lanyard = './assets/lanyard/lanyard.png';
 
@@ -61,6 +60,7 @@ export default function Lanyard({ position = [0, 0, 10], gravity = [0, -40, 0], 
     </div>
   );
 }
+
 function Band({ maxSpeed = 50, minSpeed = 0 }) {
   const band = useRef(),
     fixed = useRef(),
@@ -81,7 +81,15 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
   );
   const [dragged, drag] = useState(false);
   const [hovered, hover] = useState(false);
-  const [isSmall, setIsSmall] = useState(() => typeof window !== 'undefined' && window.innerWidth < 1024);
+  const [screenSize, setScreenSize] = useState(() => {
+    if (typeof window !== 'undefined') {
+      const width = window.innerWidth;
+      if (width >= 1024) return 'desktop';
+      if (width >= 768) return 'tablet';
+      return 'mobile';
+    }
+    return 'desktop';
+  });
 
   useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
   useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
@@ -100,11 +108,13 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsSmall(window.innerWidth < 1024);
+      const width = window.innerWidth;
+      if (width >= 1024) setScreenSize('desktop');
+      else if (width >= 768) setScreenSize('tablet');
+      else setScreenSize('mobile');
     };
 
     window.addEventListener('resize', handleResize);
-
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
@@ -139,6 +149,9 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
   curve.curveType = 'chordal';
   texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
 
+  // Responsive scale berdasarkan screen size
+  const cardScale = screenSize === 'mobile' ? 1.8 : screenSize === 'tablet' ? 2.0 : 2.25;
+
   return (
     <>
       <group position={[0, 4, 0]}>
@@ -155,7 +168,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
         <RigidBody position={[2, 0, 0]} ref={card} {...segmentProps} type={dragged ? 'kinematicPosition' : 'dynamic'}>
           <CuboidCollider args={[0.8, 1.125, 0.01]} />
           <group
-            scale={2.25}
+            scale={cardScale}
             position={[0, -1.2, -0.05]}
             onPointerOver={() => hover(true)}
             onPointerOut={() => hover(false)}
@@ -185,7 +198,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }) {
         <meshLineMaterial
           color="white"
           depthTest={false}
-          resolution={isSmall ? [1000, 2000] : [1000, 1000]}
+          resolution={screenSize === 'mobile' ? [1000, 2000] : [1000, 1000]}
           useMap
           map={texture}
           repeat={[-4, 1]}

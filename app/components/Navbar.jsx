@@ -23,8 +23,17 @@ export default function Navbar() {
     setIsOpen(false);
     
     if (pathname !== '/') {
-      router.push(`/#${sectionId}`);
+      // Navigate to home first
+      router.push('/');
+      // Wait for navigation then scroll
+      setTimeout(() => {
+        const section = document.getElementById(sectionId);
+        if (section) {
+          section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 300);
     } else {
+      // Already on home, just scroll
       const section = document.getElementById(sectionId);
       if (section) {
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -67,42 +76,42 @@ export default function Navbar() {
       </div>
       
       <div className={`nav-links ${isOpen ? 'active' : ''}`} id="navLinks">
-        <a 
+        <Link 
           href="/#home" 
           onClick={(e) => handleSectionClick(e, 'home')} 
           className={pathname === '/' ? 'active' : ''}
         >
           <i className="fas fa-home mobile-icon"></i>
           Home
-        </a>
-        <a 
+        </Link>
+        <Link 
           href="/#about" 
           onClick={(e) => handleSectionClick(e, 'about')}
         >
           <i className="fas fa-user mobile-icon"></i>
           About Me
-        </a>
-        <a 
+        </Link>
+        <Link 
           href="/#portfolio" 
           onClick={(e) => handleSectionClick(e, 'portfolio')}
         >
           <i className="fas fa-briefcase mobile-icon"></i>
           Portfolio
-        </a>
-        <a 
+        </Link>
+        <Link 
           href="/#skills" 
           onClick={(e) => handleSectionClick(e, 'skills')}
         >
           <i className="fas fa-code mobile-icon"></i>
           Skills
-        </a>
-        <a 
+        </Link>
+        <Link 
           href="/#certificates" 
           onClick={(e) => handleSectionClick(e, 'certificates')}
         >
           <i className="fas fa-certificate mobile-icon"></i>
           Certificates
-        </a>
+        </Link>
         <Link 
           href="/contact" 
           onClick={handleLinkClick} 
