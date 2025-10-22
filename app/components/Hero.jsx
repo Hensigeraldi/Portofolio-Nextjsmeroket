@@ -192,7 +192,7 @@ export default function Hero() {
           // Tampilkan foto biasa untuk mobile dan iPad
           <div className="profile-image-mobile">
             <Image 
-              src="/images/me.jpg" // Menggunakan foto dari public/images/me.jpg
+              src="/images/me2.jpg" // Menggunakan foto dari public/images/me.jpg
               alt="Hensi Geraldi Irot"
               width={400}
               height={500}
