@@ -2425,3 +2425,212 @@ body {
     font-size: 0.95em;
   }
 }
+
+
+/* ========================================
+   PROFILE IMAGE MORPHING EFFECT FOR MOBILE & TABLET
+   ======================================== */
+
+/* Mobile Profile Image dengan efek morph */
+.profile-image-mobile {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.profile-img {
+  width: 100%;
+  height: auto;
+  max-width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(206, 68, 26, 0.3);
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  /* Efek morphing */
+  animation: morph 8s ease-in-out infinite;
+  border: 3px solid #ce441a;
+  position: relative;
+  overflow: hidden;
+}
+
+.profile-img:hover {
+  transform: scale(1.05);
+  animation-duration: 4s; /* Percepat animasi saat hover */
+}
+
+/* Animasi morphing */
+@keyframes morph {
+  0% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+  25% {
+    border-radius: 45% 55% 40% 60% / 55% 35% 65% 45%;
+  }
+  50% {
+    border-radius: 30% 70% 60% 40% / 50% 60% 40% 50%;
+  }
+  75% {
+    border-radius: 55% 45% 65% 35% / 45% 65% 35% 55%;
+  }
+  100% {
+    border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  }
+}
+
+/* Efek glow tambahan */
+.profile-img::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  background: linear-gradient(45deg, #ce441a, #ff6b6b, #ce441a);
+  border-radius: inherit;
+  z-index: -1;
+  opacity: 0.3;
+  animation: glow 3s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  0% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0.6;
+    transform: scale(1.02);
+  }
+}
+
+/* ========================================
+   RESPONSIVE MORPHING EFFECT
+   ======================================== */
+
+/* iPad & Tablet Portrait (768px - 1023px) */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .profile-container {
+    position: relative;
+    right: auto;
+    transform: none;
+    width: 100%;
+    max-width: 500px;
+    height: 50vh;
+    margin: 0 auto;
+  }
+  
+  .profile-image-mobile {
+    padding: 15px;
+  }
+  
+  .profile-img {
+    max-width: 380px;
+    animation: morph 7s ease-in-out infinite;
+  }
+}
+
+/* Mobile (481px - 767px) */
+@media (min-width: 481px) and (max-width: 767px) {
+  .profile-container {
+    position: relative;
+    right: auto;
+    transform: none;
+    width: 100%;
+    max-width: 400px;
+    height: 45vh;
+    margin: 0 auto;
+  }
+  
+  .profile-image-mobile {
+    padding: 10px;
+  }
+  
+  .profile-img {
+    max-width: 320px;
+    animation: morph 6s ease-in-out infinite;
+  }
+}
+
+/* Small Mobile (376px - 480px) */
+@media (min-width: 376px) and (max-width: 480px) {
+  .profile-container {
+    position: relative;
+    right: auto;
+    transform: none;
+    width: 100%;
+    max-width: 350px;
+    height: 40vh;
+    margin: 0 auto;
+  }
+  
+  .profile-img {
+    max-width: 280px;
+    animation: morph 5s ease-in-out infinite;
+  }
+}
+
+/* Extra Small Mobile (max-width: 375px) */
+@media (max-width: 375px) {
+  .profile-container {
+    position: relative;
+    right: auto;
+    transform: none;
+    width: 100%;
+    max-width: 300px;
+    height: 35vh;
+    margin: 0 auto;
+  }
+  
+  .profile-img {
+    max-width: 240px;
+    animation: morph 4s ease-in-out infinite;
+  }
+}
+
+/* Landscape Mode untuk Mobile/Tablet */
+@media (max-height: 500px) and (orientation: landscape) {
+  .profile-container {
+    width: 280px;
+    height: 60vh;
+  }
+  
+  .profile-img {
+    max-width: 200px;
+    animation: morph 5s ease-in-out infinite;
+  }
+}
+
+/* ========================================
+   DESKTOP - TIDAK ADA PERUBAHAN
+   ======================================== */
+
+/* Desktop Only - Sembunyikan mobile image */
+@media (min-width: 1025px) {
+  .profile-image-mobile {
+    display: none;
+  }
+  
+  .lanyard-container {
+    display: block;
+  }
+  
+  /* Pastikan Lanyard tetap normal di desktop */
+  .lanyard-container > * {
+    animation: none !important;
+    border: none !important;
+  }
+}
+
+/* Mobile & iPad Only - Sembunyikan lanyard dan tampilkan foto dengan efek */
+@media (max-width: 1024px) {
+  .lanyard-container {
+    display: none;
+  }
+  
+  .profile-image-mobile {
+    display: flex;
+  }
+}
