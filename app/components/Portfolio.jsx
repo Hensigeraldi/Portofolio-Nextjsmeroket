@@ -8,42 +8,42 @@ export default function Portfolio() {
 
   const projects = [
     {
-      image: '/images/SAW.png',
+      image: 'https://portohensi.banana-lab.dev/images/SAW.png',
       title: 'SAW calculation project',
       description: 'Semester 6 Decision Making System Course Project, namely for Scholarship Selection Using the SAW Method',
       tech: 'php, HTML5, CSS3, Bootstrap, and Java Script',
       link: null
     },
     {
-      image: '/images/input.png',
+      image: 'https://portohensi.banana-lab.dev/images/input.png',
       title: 'Form Input data',
       description: 'In this data input section, prospective scholarship recipients will fill out the form according to the provisions and data listed.',
       tech: 'php, HTML5, CSS3, Bootstrap, and Java Script',
       link: null
     },
     {
-      image: '/images/Hasilsaw.png',
+      image: 'https://portohensi.banana-lab.dev/images/Hasilsaw.png',
       title: 'Scholarship Selection Results',
       description: 'After the prospective scholarship recipients fill out the specified form, the scholarship selection results will appear.',
       tech: 'php, HTML5, CSS3, Bootstrap, and Java Script',
       link: null
     },
     {
-      image: '/images/Kelembapanprediksi.png',
+      image: 'https://portohensi.banana-lab.dev/images/Kelembapanprediksi.png',
       title: 'Soil moisture monitoring and water prediction using machine learning',
       description: 'My project in the Machine Learning course is designed to read soil moisture using soil moisture and predict liters of water using random forest machine learning to produce healthy and high-quality plants.',
       tech: 'Esp32, Python Random Forest, Frontend : Html5 Css3 and javascript',
       link: null
     },
     {
-      image: '/images/footer.png',
+      image: 'https://portohensi.banana-lab.dev/images/footer.png',
       title: 'Footer',
       description: 'In this footer section to display the development team, a team that is committed to presenting the best technology solutions for farmers. Contact us for questions to us or to work together and about this system.',
       tech: 'Frontend : Html5 Css3 and javascript',
       link: null
     },
     {
-      image: '/images/commerce.png',
+      image: 'https://portohensi.banana-lab.dev/images/commerce.png',
       title: 'E-Commerce',
       description: 'My project this time is also a shopping website for various foods and drinks, a responsive display designed to give users a good shopping experience and will later be promoted to MSME partners.',
       tech: 'Visit',

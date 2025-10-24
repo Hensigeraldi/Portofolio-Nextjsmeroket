@@ -286,7 +286,7 @@ export default function AIChatbot() {
         <div className="chatbot-header">
           <div className="header-content" onClick={toggleChatbot}>
             <div className="bot-avatar">
-              <Image src="/images/me.jpg" alt="AI Assistant" width={40} height={40} />
+              <Image src="https://portohensi.banana-lab.dev/images/me.jpg" alt="AI Assistant" width={40} height={40} />
             </div>
             <div className="bot-info">
               <h4>Hensi AI Assistant</h4>

@@ -36,7 +36,7 @@ export default function Footer() {
         <div className="footer-content">
           <div className="footer-logo">
             <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-              <Image src="/images/logo1.jpeg" alt="Logo" width={40} height={40} />
+              <Image src="https://portohensi.banana-lab.dev/images/logo1.jpeg" alt="Logo" width={40} height={40} />
               <span>Nzyy.</span>
             </Link>
           </div>

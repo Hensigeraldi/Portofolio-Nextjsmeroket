@@ -65,7 +65,7 @@ export default function Navbar() {
       <div className="logo">
         <Link href="/" className="logo-link">
           <Image 
-            src="/images/logo1.jpeg" 
+            src="https://portohensi.banana-lab.dev/images/logo1.jpeg" 
             alt="Nzyy Logo" 
             width={40} 
             height={40} 

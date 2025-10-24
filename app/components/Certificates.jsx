@@ -9,28 +9,28 @@ export default function Certificates() {
 
   const certificates = [
     {
-      image: '/images/1.jpg',
+      image: 'https://portohensi.banana-lab.dev/images/1.jpg',
       title: 'Sertifikat Belajar dasar Pemograman Java',
       description: 'Sertifikat Kompetensi Kelulusan By Dicoding',
       year: '2024',
       link: 'https://drive.google.com/file/d/1iKaug5pakN-tZFpuKAYQfP2H1aaYgXzz/view?usp=drive_link'
     },
     {
-      image: '/images/2.jpg',
+      image: 'https://portohensi.banana-lab.dev/images/2.jpg',
       title: 'Sertifikat Junior Web Developer (JWD)',
       description: 'Sertifikat kompetensi by Vocational School Graduate Academy (VSGA)',
       year: '2023',
       link: 'https://drive.google.com/file/d/1q4NjaMuGM-oD_8q_HfNFmJTHWcifHQrc/view?usp=sharing'
     },
     {
-      image: '/images/3.jpg',
+      image: 'https://portohensi.banana-lab.dev/images/3.jpg',
       title: 'Sertifikat Belajar dasar Pemograman Web',
       description: 'Sertifikat Kompetensi Kelulusan By Dicoding',
       year: '2024',
       link: 'https://drive.google.com/file/d/1oZAKGawGg377rlDFG9fCemIwl0tM2vdV/view?usp=sharing'
     },
     {
-      image: '/images/4.jpg',
+      image: 'https://portohensi.banana-lab.dev/images/4.jpg',
       title: 'Sertifikat Javascript Introduction',
       description: 'Sertifikat Kompetensi by Myskill Short Class',
       year: '2024',
