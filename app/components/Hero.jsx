@@ -1,9 +1,8 @@
 'use client';
 import { useEffect, useState, Suspense } from 'react';
 import dynamic from 'next/dynamic';
-import Image from 'next/image';
 
-// Lazy load Lanyard component hanya untuk desktop
+// Lazy load Lanyard component
 const Lanyard = dynamic(() => import('./Lanyard/Lanyard'), { 
   ssr: false,
   loading: () => <div className="lanyard-loading">Loading 3D...</div>
@@ -13,37 +12,13 @@ export default function Hero() {
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
+  const [screenSize, setScreenSize] = useState('desktop');
 
   const texts = [
     "Hensi Geraldi Irot", 
     "a Frontend Developer",
     "a Backend Developer"
   ];
-
-  // Deteksi device type - dengan error handling
-  useEffect(() => {
-    const checkDevice = () => {
-      if (typeof window !== 'undefined') {
-        const isMobileDevice = window.innerWidth <= 1024; // iPad dan mobile
-        setIsMobile(isMobileDevice);
-      }
-    };
-
-    // Check initial device
-    checkDevice();
-    
-    // Add event listener hanya di client side
-    if (typeof window !== 'undefined') {
-      window.addEventListener('resize', checkDevice);
-    }
-
-    return () => {
-      if (typeof window !== 'undefined') {
-        window.removeEventListener('resize', checkDevice);
-      }
-    };
-  }, []);
 
   useEffect(() => {
     const typingSpeed = 100;
@@ -81,7 +56,7 @@ export default function Hero() {
   };
 
   useEffect(() => {
-    // Initialize Particles untuk Home section
+    // Initialize Particles for Home section
     if (typeof window !== 'undefined' && window.particlesJS) {
       window.particlesJS('particles-js', {
         particles: {
@@ -154,6 +129,23 @@ export default function Hero() {
     }
   }, []);
 
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width >= 1024) {
+        setScreenSize('desktop');
+      } else if (width >= 768) {
+        setScreenSize('tablet');
+      } else {
+        setScreenSize('mobile');
+      }
+    };
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <section className="home" id="home">
       <div id="particles-js"></div>
@@ -186,27 +178,18 @@ export default function Hero() {
         </div>
       </div>
       
-      {/* Profile Image Container - Responsive */}
-      <div className="profile-container" data-aos="zoom-in-left" data-aos-delay="300">
-        {isMobile ? (
-          // Tampilkan foto biasa untuk mobile dan iPad
-          <div className="profile-image-mobile">
-            <Image 
-              src="/images/me2.jpg" // Menggunakan foto dari public/images/me.jpg
-              alt="Hensi Geraldi Irot"
-              width={400}
-              height={500}
-              className="profile-img"
-              priority
-            />
-          </div>
+      {/* Lanyard 3D Component replaces profile image */}
+      <div className="lanyard-container" data-aos="zoom-in-left" data-aos-delay="300">
+        {screenSize === 'desktop' ? (
+          <Suspense fallback={<div className="lanyard-loading">Loading...</div>}>
+            <Lanyard position={[0, 0, 10]} gravity={[0, -40, 0]} fov={25} transparent={true} />
+          </Suspense>
         ) : (
-          // Tampilkan Lanyard 3D untuk desktop
-          <div className="lanyard-container">
-            <Suspense fallback={<div className="lanyard-loading">Loading 3D Model...</div>}>
-              <Lanyard position={[0, 0, 10]} gravity={[0, -40, 0]} fov={25} transparent={true} />
-            </Suspense>
-          </div>
+          <img 
+            src="/images/me2.jpg" 
+            alt="Profile Photo" 
+            className="profile-img image-morph" 
+          />
         )}
       </div>
     </section>
