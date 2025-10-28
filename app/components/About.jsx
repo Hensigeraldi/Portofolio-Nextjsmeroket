@@ -2,16 +2,13 @@
 import Image from 'next/image';
 
 export default function About() {
-  // Ambil base URL dari environment variable
-  const imageBaseUrl = process.env.NEXT_PUBLIC_IMAGE_BASE_URL || '/images';
-  
   return (
     <section className="about" id="about">
       <div className="about-container">
         <div className="about-img" data-aos="zoom-out-right" data-aos-delay="200">
           <div className="image-morph">
             <Image 
-              src={`${imageBaseUrl}/me2.jpg`}
+              src="https://portohensi.banana-lab.dev/images/me.jpg" 
               alt="About Me" 
               width={400} 
               height={400}

@@ -1,5 +1,5 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+// import "./globals.css"; // HAPUS BARIS INI
 import Script from "next/script";
 
 const geistSans = Geist({
@@ -21,6 +21,18 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        {/* Load globals.css dari S3 melalui reverse proxy */}
+        <link 
+          rel="stylesheet" 
+          href="https://portohensi.banana-lab.dev/css/globals.css"
+        />
+        
+        {/* Load Lanyard.css dari S3 melalui reverse proxy */}
+        <link 
+          rel="stylesheet" 
+          href="https://portohensi.banana-lab.dev/css/lanyard/Lanyard.css"
+        />
+        
         <link 
           rel="stylesheet" 
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
