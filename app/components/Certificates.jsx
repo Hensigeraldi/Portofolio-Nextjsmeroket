@@ -3,34 +3,36 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 export default function Certificates() {
+  const imagesBaseUrl = process.env.NEXT_PUBLIC_IMAGES_BASE_URL || '/images';
+  
   const [currentSlide, setCurrentSlide] = useState(0);
   const scrollContainerRef = useRef(null);
   const [isMobile, setIsMobile] = useState(false);
 
   const certificates = [
     {
-      image: 'https://portohensi.banana-lab.dev/images/1.jpg',
+      image: `${imagesBaseUrl}/1.jpg`,
       title: 'Sertifikat Belajar dasar Pemograman Java',
       description: 'Sertifikat Kompetensi Kelulusan By Dicoding',
       year: '2024',
       link: 'https://drive.google.com/file/d/1iKaug5pakN-tZFpuKAYQfP2H1aaYgXzz/view?usp=drive_link'
     },
     {
-      image: 'https://portohensi.banana-lab.dev/images/2.jpg',
+      image: `${imagesBaseUrl}/2.jpg`,
       title: 'Sertifikat Junior Web Developer (JWD)',
       description: 'Sertifikat kompetensi by Vocational School Graduate Academy (VSGA)',
       year: '2023',
       link: 'https://drive.google.com/file/d/1q4NjaMuGM-oD_8q_HfNFmJTHWcifHQrc/view?usp=sharing'
     },
     {
-      image: 'https://portohensi.banana-lab.dev/images/3.jpg',
+      image: `${imagesBaseUrl}/3.jpg`,
       title: 'Sertifikat Belajar dasar Pemograman Web',
       description: 'Sertifikat Kompetensi Kelulusan By Dicoding',
       year: '2024',
       link: 'https://drive.google.com/file/d/1oZAKGawGg377rlDFG9fCemIwl0tM2vdV/view?usp=sharing'
     },
     {
-      image: 'https://portohensi.banana-lab.dev/images/4.jpg',
+      image: `${imagesBaseUrl}/4.jpg`,
       title: 'Sertifikat Javascript Introduction',
       description: 'Sertifikat Kompetensi by Myskill Short Class',
       year: '2024',
@@ -38,7 +40,6 @@ export default function Certificates() {
     }
   ];
 
-  // Detect mobile on mount and resize
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -50,7 +51,6 @@ export default function Certificates() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Handle scroll position untuk mobile
   useEffect(() => {
     if (!isMobile) return;
 
@@ -144,7 +144,6 @@ export default function Certificates() {
           ))}
         </div>
 
-        {/* Slider Controls - Hanya muncul di mobile */}
         <div className="slider-controls">
           <button className="prev-btn" onClick={prevSlide} aria-label="Previous certificate">
             <i className="fas fa-chevron-left"></i>

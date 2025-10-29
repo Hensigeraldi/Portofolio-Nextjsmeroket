@@ -3,6 +3,8 @@ import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 
 export default function AIChatbot() {
+  const imagesBaseUrl = process.env.NEXT_PUBLIC_IMAGES_BASE_URL || '/images';
+  
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     { 
@@ -13,7 +15,7 @@ export default function AIChatbot() {
   const [inputValue, setInputValue] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [showGreeting, setShowGreeting] = useState(false);
-  const [userLanguage, setUserLanguage] = useState('english'); // 'english' or 'indonesian'
+  const [userLanguage, setUserLanguage] = useState('english');
   const messagesEndRef = useRef(null);
   const greetingTimeoutRef = useRef(null);
 
@@ -55,7 +57,6 @@ export default function AIChatbot() {
     };
   }, []);
 
-  // Detect language from user message
   const detectLanguage = (message) => {
     const indonesianWords = [/halo|hai|apa kabar|terima kasih|makasih|tolong|saya|kamu|indonesia|proyek|keahlian|kontak|ig|wa|telepon|belajar|koding|programming|project|skill|contact|learn|coding/i];
     const englishWords = [/hello|hi|hey|how are you|thank you|thanks|please|i |you |usa|uk|project|skill|contact|learn|code|programming/i];
@@ -74,84 +75,72 @@ export default function AIChatbot() {
     return indonesianScore >= englishScore ? 'indonesian' : 'english';
   };
 
-  // Bilingual AI Response
   const getAIResponse = (userMessage) => {
     const detectedLang = detectLanguage(userMessage);
     setUserLanguage(detectedLang);
     
     const lowerMessage = userMessage.toLowerCase();
 
-    // Greetings - Bilingual
     if (/(hello|hi|hey|halo|hallo|hai)/i.test(userMessage)) {
       return detectedLang === 'indonesian' 
         ? "Halo! 👋 Saya asisten AI Hensi. Saya bisa cerita tentang skills, project, pengalaman Hensi, atau bahas programming. Mau tanya apa?"
         : "Hey there! 👋 I'm Hensi's AI assistant. I can help you learn about his skills and projects, discuss technology, programming, or just have a friendly chat. What's on your mind?";
     }
     
-    // How are you - Bilingual
     else if (/(how are you|what's up|apa kabar|how do you do)/i.test(userMessage)) {
       return detectedLang === 'indonesian'
         ? "Saya baik-baik saja! Siap membantu kamu menjelajahi portfolio Hensi atau ngobrol tentang teknologi. Gimana kabarmu?"
         : "I'm doing great! Ready to help you explore Hensi's portfolio or chat about technology. How about you?";
     }
     
-    // Thanks - Bilingual
     else if (/(thank you|thanks|terima kasih|makasih|thx)/i.test(userMessage)) {
       return detectedLang === 'indonesian'
         ? "Sama-sama! 😊 Senang bisa membantu. Ada hal lain yang mau kamu tau tentang Hensi atau mau diskusi programming?"
         : "You're welcome! 😊 Happy to help. Is there anything else you'd like to know about Hensi or maybe discuss programming topics?";
     }
     
-    // Who are you - Bilingual
     else if (/(your name|who are you|siapa kamu|what are you)/i.test(userMessage)) {
       return detectedLang === 'indonesian'
         ? "Saya Hensi AI! 🤖 Saya asisten pintar yang dibuat untuk mewakili Hensi Geraldi Irot dan membantu pengunjung belajar tentang karya-karyanya. Saya juga bisa ngobrol tentang teknologi dan programming!"
         : "I'm Hensi AI! 🤖 I'm an intelligent assistant created to represent Hensi Geraldi Irot and help visitors learn about his work. I can also chat about technology and programming in general!";
     }
     
-    // About Hensi - Bilingual
     else if (/(ceritakan|tentang|hensi|profil|about|siapa hens)/i.test(userMessage)) {
       return detectedLang === 'indonesian'
         ? "Hensi Geraldi Irot adalah Full-Stack Developer dari Manado! 🔥\n\n• Skills: HTML5, CSS3, JavaScript, PHP, MySQL, ESP32, Python\n• Projects: IoT soil monitoring, sistem beasiswa, e-commerce website\n• Contact: +62 822-3979-1258 | hensiirot100@gmail.com\n\nMau tahu lebih detail tentang apa?"
         : "Hensi Geraldi Irot is a Full-Stack Developer from Manado! 🔥\n\n• Skills: HTML5, CSS3, JavaScript, PHP, MySQL, ESP32, Python\n• Projects: IoT soil monitoring, scholarship system, e-commerce website\n• Contact: +62 822-3979-1258 | hensiirot100@gmail.com\n\nWhat would you like to know more about?";
     }
     
-    // Skills - Bilingual
     else if (/(skill|ability|keahlian|expertise|technology stack)/i.test(userMessage)) {
       return detectedLang === 'indonesian'
         ? "Hensi punya skill lengkap banget! 💻\n\n• Frontend: HTML5, CSS3, JavaScript, React\n• Backend: PHP, MySQL, Node.js\n• IoT: ESP32, sensor, hardware programming\n• Machine Learning: Python, Random Forest\n• Tools: Git, VS Code, Arduino\n\nMau tahu project yang pakai skill tertentu?"
         : "Hensi has a diverse skill set: 🛠️\n\n• Frontend: HTML5, CSS3, JavaScript, React\n• Backend: PHP, MySQL, Node.js\n• IoT & Hardware: ESP32, sensors\n• Machine Learning: Python, Random Forest\n• Tools: Git, VS Code, Arduino\n\nHe's a versatile full-stack developer with hardware experience too!";
     }
     
-    // Projects - Bilingual
     else if (/(project|portfolio|proyek|karya|work)/i.test(userMessage)) {
       return detectedLang === 'indonesian'
         ? "Hensi punya beberapa project keren: 🚀\n\n• IoT Soil Monitoring: Monitor tanah pakai sensor & machine learning\n• Scholarship System: Seleksi beasiswa pakai metode SAW\n• E-commerce Website: Toko online full-stack\n• Dan masih banyak lagi!\n\nProject mana yang menarik buat kamu?"
         : "Hensi has some cool projects! 🔥\n\n• IoT Soil Monitoring: Soil monitoring with sensors & machine learning\n• Scholarship System: Scholarship selection using SAW method\n• E-commerce Website: Full-stack online store\n• And many more!\n\nWhich type interests you most?";
     }
     
-    // Programming - Bilingual
     else if (/(programming|coding|learn code|belajar programming|koding)/i.test(userMessage)) {
       return detectedLang === 'indonesian'
         ? "Wih mau belajar programming? 💪\nBerdasarkan pengalaman Hensi, mulai dari web development (HTML/CSS/JS) dulu itu paling recommended! Nanti bisa expand ke backend, IoT, atau machine learning.\n\nMau saran khusus buat belajar apa?"
         : "That's awesome you're interested in programming! 💻 Based on Hensi's journey, I'd recommend starting with web technologies (HTML/CSS/JavaScript) as they're very beginner-friendly. Hensi himself started there and expanded to backend, IoT, and machine learning. What specific area interests you?";
     }
     
-    // Contact - Bilingual
     else if (/(contact|hubungi|email|phone|wa|telepon|number|kontak|ig|instagram)/i.test(userMessage)) {
       return detectedLang === 'indonesian'
         ? "Kamu bisa hubungi Hensi via: 📞\n\n• WhatsApp: +62 822-3979-1258\n• Email: hensiirot100@gmail.com\n• Instagram: @hensigeraldi_\n• Lokasi: Manado, Indonesia\n\nBebas banget buat chat buat tanya-tanya atau kolaborasi!"
         : "You can contact Hensi through: 📞\n\n• WhatsApp: +62 822-3979-1258\n• Email: hensiirot100@gmail.com\n• Instagram: @hensigeraldi_\n• Location: Manado, Indonesia\n\nFeel free to reach out for collaborations or questions!";
     }
     
-    // Goodbye - Bilingual
     else if (/(bye|goodbye|see you|selamat tinggal|exit|quit|dadah)/i.test(userMessage)) {
       return detectedLang === 'indonesian'
         ? "Terima kasih sudah ngobrol! 👋 Jangan ragu buat balik lagi kalau ada pertanyaan lain tentang karya Hensi atau mau diskusi teknologi. Semoga harimu menyenangkan!"
         : "Thanks for chatting! 👋 Feel free to come back if you have more questions about Hensi's work or want to discuss technology. Have a great day!";
     }
     
-    // Default responses - Bilingual
     else {
       const indonesianResponses = [
         "Pertanyaan menarik! 😊 Saya khusus bisa bantu tentang skills Hensi, project-project keren, info contact, atau saran belajar programming. Mau tanya yang mana?",
@@ -178,7 +167,6 @@ export default function AIChatbot() {
     setInputValue('');
     setIsTyping(true);
 
-    // Use bilingual AI
     setTimeout(() => {
       const botResponse = getAIResponse(inputValue);
       setIsTyping(false);
@@ -210,14 +198,12 @@ export default function AIChatbot() {
 
   return (
     <>
-      {/* Chatbot Button */}
       <div className="ai-chatbot-btn" onClick={toggleChatbot}>
         <i className="fas fa-robot"></i>
         <span className="pulse-effect"></span>
         <span className="chat-notification">AI</span>
       </div>
 
-      {/* Greeting Notification - Bilingual */}
       {showGreeting && !isOpen && (
         <div 
           className="chatbot-greeting" 
@@ -281,12 +267,16 @@ export default function AIChatbot() {
         </div>
       )}
 
-      {/* Chatbot Widget */}
       <div className={`chatbot-widget ${isOpen ? 'active' : ''}`} id="chatbotWidget">
         <div className="chatbot-header">
           <div className="header-content" onClick={toggleChatbot}>
             <div className="bot-avatar">
-              <Image src="https://portohensi.banana-lab.dev/images/me.jpg" alt="AI Assistant" width={40} height={40} />
+              <Image 
+                src={`${imagesBaseUrl}/me.jpg`}
+                alt="AI Assistant" 
+                width={40} 
+                height={40} 
+              />
             </div>
             <div className="bot-info">
               <h4>Hensi AI Assistant</h4>

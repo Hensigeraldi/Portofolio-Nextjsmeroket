@@ -2,13 +2,14 @@
 import { useEffect, useState, Suspense } from 'react';
 import dynamic from 'next/dynamic';
 
-// Lazy load Lanyard component
 const Lanyard = dynamic(() => import('./Lanyard/Lanyard'), { 
   ssr: false,
   loading: () => <div className="lanyard-loading">Loading 3D...</div>
 });
 
 export default function Hero() {
+  const imagesBaseUrl = process.env.NEXT_PUBLIC_IMAGES_BASE_URL || '/images';
+  
   const [textIndex, setTextIndex] = useState(0);
   const [charIndex, setCharIndex] = useState(0);
   const [isDeleting, setIsDeleting] = useState(false);
@@ -56,7 +57,6 @@ export default function Hero() {
   };
 
   useEffect(() => {
-    // Initialize Particles for Home section
     if (typeof window !== 'undefined' && window.particlesJS) {
       window.particlesJS('particles-js', {
         particles: {
@@ -178,7 +178,6 @@ export default function Hero() {
         </div>
       </div>
       
-      {/* Lanyard 3D Component replaces profile image */}
       <div className="lanyard-container" data-aos="zoom-in-left" data-aos-delay="300">
         {screenSize === 'desktop' ? (
           <Suspense fallback={<div className="lanyard-loading">Loading...</div>}>
@@ -186,7 +185,7 @@ export default function Hero() {
           </Suspense>
         ) : (
           <img 
-            src="/images/me2.jpg" 
+            src={`${imagesBaseUrl}/me2.jpg`}
             alt="Profile Photo" 
             className="profile-img image-morph" 
           />

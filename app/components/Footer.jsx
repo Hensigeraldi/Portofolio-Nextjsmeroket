@@ -4,17 +4,15 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Footer() {
+  const imagesBaseUrl = process.env.NEXT_PUBLIC_IMAGES_BASE_URL || '/images';
   const pathname = usePathname();
   const router = useRouter();
 
-  // Handle navigation to home sections from any page
   const handleSectionClick = (e, sectionId) => {
     e.preventDefault();
     
-    // If we're not on home page, go to home first then scroll
     if (pathname !== '/') {
       router.push('/');
-      // Wait for navigation then scroll
       setTimeout(() => {
         const section = document.getElementById(sectionId);
         if (section) {
@@ -22,7 +20,6 @@ export default function Footer() {
         }
       }, 300);
     } else {
-      // Already on home, just scroll
       const section = document.getElementById(sectionId);
       if (section) {
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -36,7 +33,12 @@ export default function Footer() {
         <div className="footer-content">
           <div className="footer-logo">
             <Link href="/" style={{ display: 'flex', alignItems: 'center', textDecoration: 'none' }}>
-              <Image src="https://portohensi.banana-lab.dev/images/logo1.jpeg" alt="Logo" width={40} height={40} />
+              <Image 
+                src={`${imagesBaseUrl}/logo1.jpeg`}
+                alt="Logo" 
+                width={40} 
+                height={40} 
+              />
               <span>Nzyy.</span>
             </Link>
           </div>

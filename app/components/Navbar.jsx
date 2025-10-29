@@ -5,6 +5,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Navbar() {
+  const imagesBaseUrl = process.env.NEXT_PUBLIC_IMAGES_BASE_URL || '/images';
+  
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -17,15 +19,12 @@ export default function Navbar() {
     setIsOpen(false);
   };
 
-  // Handle navigation to home sections from any page
   const handleSectionClick = (e, sectionId) => {
     e.preventDefault();
     setIsOpen(false);
     
     if (pathname !== '/') {
-      // Navigate to home first
       router.push('/');
-      // Wait for navigation then scroll
       setTimeout(() => {
         const section = document.getElementById(sectionId);
         if (section) {
@@ -33,7 +32,6 @@ export default function Navbar() {
         }
       }, 300);
     } else {
-      // Already on home, just scroll
       const section = document.getElementById(sectionId);
       if (section) {
         section.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -55,7 +53,6 @@ export default function Navbar() {
     return () => document.removeEventListener('click', handleClickOutside);
   }, []);
 
-  // Close menu when route changes
   useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
@@ -65,7 +62,7 @@ export default function Navbar() {
       <div className="logo">
         <Link href="/" className="logo-link">
           <Image 
-            src="https://portohensi.banana-lab.dev/images/logo1.jpeg" 
+            src={`${imagesBaseUrl}/logo1.jpeg`}
             alt="Nzyy Logo" 
             width={40} 
             height={40} 
@@ -122,7 +119,6 @@ export default function Navbar() {
         </Link>
       </div>
       
-      {/* Animated Hamburger Menu - HANYA UNTUK MOBILE */}
       <button 
         className={`menu-toggle ${isOpen ? 'active' : ''}`}
         onClick={toggleMenu}
