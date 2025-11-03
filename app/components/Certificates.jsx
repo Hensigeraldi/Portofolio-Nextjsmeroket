@@ -11,7 +11,7 @@ export default function Certificates() {
 
   const certificates = [
     {
-      image: `${imagesBaseUrl}/1.jpg`,
+      image: `${imagesBaseUrl}/input.png`,
       title: 'Sertifikat Belajar dasar Pemograman Java',
       description: 'Sertifikat Kompetensi Kelulusan By Dicoding',
       year: '2024',
