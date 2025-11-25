@@ -2173,10 +2173,11 @@ body {
   padding: 0;
 }
 
+
 .parallax {
   min-height: 80vh;
   width: 100%;
-  background-image: url('/images/contact.jpg');
+  background-image: url('/images/success.png');
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
@@ -2538,4 +2539,3 @@ body {
     border-radius: 60% 40% 30% 70%/60% 30% 70% 40%;
   }
 }
-

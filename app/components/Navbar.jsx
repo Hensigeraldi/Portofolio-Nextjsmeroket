@@ -62,7 +62,7 @@ export default function Navbar() {
       <div className="logo">
         <Link href="/" className="logo-link">
           <Image 
-            src={`${imagesBaseUrl}/logo1.jpeg`}
+            src={`${imagesBaseUrl}/nzy.png`}
             alt="Nzyy Logo" 
             width={40} 
             height={40} 

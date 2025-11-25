@@ -1,0 +1,6 @@
+Modifying the navbar section
+
+1. Modifying the color of my navbar to match the appearance of my website.
+2. Adjusting the width of the navbar before scrolling to make it smaller.
+3. For mobile viewing, the iPad navbar isn't fully extended, so I fixed it to make it responsive.
+4. Finally, the about, portfolio, skills, and certificates content were aligned with the navbar's right and left margins, making it responsive on mobile, iPad, and Mac OS.

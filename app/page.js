@@ -17,29 +17,43 @@ export default function Home() {
   useEffect(() => {
     setMounted(true);
     
-    // Initialize AOS
+    // Initialize AOS - VERSI YANG BENAR
     AOS.init({
-      duration: 1000,
-      once: false,
-      offset: 120,
-      mirror: true,
-      easing: 'ease-in-out-quad'
+      duration: 600, // Lebih cepat dari 800ms
+      once: true, // ⭐ Animasi hanya sekali
+      offset: 50, // Lebih kecil agar animasi lebih cepat trigger
+      mirror: false, // ⭐ Nonaktifkan mirror
+      easing: 'ease-out', // Lebih ringan
+      delay: 0, // Tidak ada delay
+      // ❌ HAPUS disable: function() - ini yang bikin konten hilang!
     });
 
-    // Sticky Navbar
+    // Sticky Navbar - OPTIMIZED dengan throttle
+    let ticking = false;
     const handleScroll = () => {
-      const navbar = document.querySelector('.navbar');
-      if (navbar) {
-        if (window.scrollY > 50) {
-          navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
-        } else {
-          navbar.style.boxShadow = 'none';
-        }
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const navbar = document.querySelector('.navbar');
+          if (navbar) {
+            if (window.scrollY > 50) {
+              navbar.classList.add('scrolled');
+            } else {
+              navbar.classList.remove('scrolled');
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      // Cleanup AOS jika perlu
+      AOS.refresh();
+    };
   }, []);
 
   if (!mounted) return null;
