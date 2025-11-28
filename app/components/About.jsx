@@ -11,7 +11,7 @@ export default function About() {
         <div className="about-img" data-aos="zoom-out-right" data-aos-delay="200">
           <div className="image-morph">
             <Image 
-              src={`${imagesBaseUrl}/me.jpg`}
+              src={`${imagesBaseUrl}/1.jpg`}
               alt="About Me" 
               width={400} 
               height={400}
