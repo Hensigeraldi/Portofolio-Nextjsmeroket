@@ -20,7 +20,7 @@ export default function Certificates() {
     {
       image: `${imagesBaseUrl}/2.jpg`,
       title: 'Sertifikat Junior Web Developer (JWD)',
-      description: 'Sertifikat kompetensi by Vocational School Graduate Academy (VSGA)',
+      description: 'Sertifikat kompetensi by Badan Nasional Sertifikasi Profesi (BNSP)',
       year: '2023',
       link: 'https://drive.google.com/file/d/1q4NjaMuGM-oD_8q_HfNFmJTHWcifHQrc/view?usp=sharing'
     },
@@ -37,7 +37,28 @@ export default function Certificates() {
       description: 'Sertifikat Kompetensi by Myskill Short Class',
       year: '2024',
       link: 'https://drive.google.com/file/d/1OTPJfbg6LmMO_bUY7E9r0PGMGW-bR4Kr/view?usp=sharing'
-    }
+    },
+     {
+      image: `${imagesBaseUrl}/5.jpg`,
+      title: 'Sertifikat AWS SimuLearn: Cloud Computing Essentials',
+      description: 'Sertifikat Kompetensi by Amazon Web Service',
+      year: '2025',
+      link: 'https://drive.google.com/file/d/1jy4oUBYkQ5-mZj6w33ibutaJ-iScogup/view?usp=sharing://drive.google.com/file/d/1OTPJfbg6LmMO_bUY7E9r0PGMGW-bR4Kr/view?usp=sharing'
+    },
+    {
+      image: `${imagesBaseUrl}/6.jpg`,
+      title: 'Sertifikat AWS SimuLearn: Cloud First Steps',
+      description: 'Sertifikat Kompetensi by Amazon Web Service',
+      year: '2025',
+      link: 'https://drive.google.com/file/d/1IouDoUsFZ8rppHkUh87lLReEpHRFG0-P/view?usp=sharinghttps://drive.google.com/file/d/1OTPJfbg6LmMO_bUY7E9r0PGMGW-bR4Kr/view?usp=sharing'
+    },
+    {
+      image: `${imagesBaseUrl}/7.jpg`,
+      title: 'Certificate of Internship: DevOps Engineer',
+      description: 'Sertifikat Internship by Kompas Gramedia',
+      year: '2025',
+      link: 'https://drive.google.com/file/d/1hTdSFcm20rqcxSWk4zLOXOXVfa6JcIAZ/view?usp=drive_link'
+    },
   ];
 
   useEffect(() => {

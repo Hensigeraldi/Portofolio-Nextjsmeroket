@@ -18,7 +18,8 @@ export default function Hero() {
   const texts = [
     "Hensi Geraldi Irot", 
     "a Frontend Developer",
-    "a Backend Developer"
+    "a Backend Developer",
+    "a DevOps Engineer"
   ];
 
   useEffect(() => {

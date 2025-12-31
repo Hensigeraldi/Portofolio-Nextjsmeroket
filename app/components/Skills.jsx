@@ -11,7 +11,13 @@ export default function Skills() {
     { icon: 'fas fa-database', title: 'MySQL', description: 'Database design' },
     { icon: 'fab fa-python', title: 'Python', description: 'Automation, Scripting' },
     { icon: 'fas fa-microchip', title: 'ESP32', description: 'IoT development, Sensor integration' },
-    { icon: 'fas fa-robot', title: 'Machine Learning', description: 'Predictive modeling, Data preprocessing' }
+    { icon: 'fas fa-robot', title: 'Machine Learning', description: 'Predictive modeling, Data preprocessing' },
+    // Tambahan skills DevOps/Cloud
+    { icon: 'fab fa-aws', title: 'AWS', description: 'EC2, S3, Lambda, CloudFormation, IAM' },
+    { icon: 'fas fa-cloud', title: 'Terraform', description: 'Infrastructure as Code, Provisioning, State management' },
+    { icon: 'fab fa-docker', title: 'Docker', description: 'Containerization, Docker Compose, Image management' },
+    { icon: 'fas fa-cogs', title: 'Jenkins', description: 'CI/CD pipelines, Automation, Build automation' },
+    { icon: 'fas fa-server', title: 'Ansible', description: 'Configuration management, Automation, Playbooks' }
   ];
 
   const scrollSkills = (direction) => {

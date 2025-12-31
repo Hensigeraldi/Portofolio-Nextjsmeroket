@@ -17,11 +17,11 @@ export default function Portfolio() {
       link: null
     },
     {
-      image: `${imagesBaseUrl}/input.png`,
-      title: 'Form Input data',
-      description: 'In this data input section, prospective scholarship recipients will fill out the form according to the provisions and data listed.',
-      tech: 'php, HTML5, CSS3, Bootstrap, and Java Script',
-      link: null
+      image: `${imagesBaseUrl}/BPJS.png`,
+      title: 'Digitalization of BPJS Assets',
+      description: 'Digitalization for asset/facility management at the BPJS Employment office',
+      tech: 'Next.js, React.js, Node.js, and Prisma',
+      link: 'https://github.com/Hensigeraldi/FasilitasBPJS.git'
     },
     {
       image: `${imagesBaseUrl}/Hasilsaw.png`,
