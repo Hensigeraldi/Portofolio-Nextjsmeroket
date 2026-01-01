@@ -31,12 +31,12 @@ export default function About() {
     {
       company: 'PT Wapoga Mutiara Industri (WMI)',
       location: 'Biak Numfor',
-      role: 'IT Support Technician',
+      role: 'IT Technician',
       duration: 'September 2019 - November 2019',
       period: '3 months',
       responsibilities: [
-        'Network cable installation (RJ45)',
-        'Printer assembly and setup',
+        'Crimping RJ-45 cables and LAN network configuration with Cisco switches',
+        'Mechanical and electronic component assembly of printers',
         'Hardware maintenance and troubleshooting'
       ],
       color: '#764ba2'

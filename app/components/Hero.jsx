@@ -176,6 +176,9 @@ export default function Hero() {
           <a href="https://mail.google.com/mail/?view=cm&fs=1&to=hensiirot100@gmail.com&su=Halo%20Hensi&body=Hai%20Hensi%2C%20saya%20tertarik%20dengan%20portfolio%20kamu!" target="_blank" rel="noopener noreferrer" aria-label="Email" data-aos="zoom-in" data-aos-delay="1100">
             <i className="fas fa-envelope"></i>
           </a>
+            <a href="https://www.linkedin.com/in/hensi-irot-850408393/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" data-aos="zoom-in" data-aos-delay="1200">
+            <i className="fab fa-linkedin-in"></i>
+          </a>
         </div>
       </div>
       
